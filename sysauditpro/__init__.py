@@ -1,6 +1,6 @@
-# Importiere Kernfunktionen in den Namespace des Pakets
+# Import core functions
 from .auditor import perform_audit
 from .reporter import generate_report, save_report
 
-# Definiere __all__ für explizite Importe
+# Define __all__ for explicit import
 __all__ = ['perform_audit', 'generate_report', 'save_report']
