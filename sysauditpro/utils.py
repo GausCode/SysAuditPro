@@ -2,26 +2,26 @@ import logging
 import configparser
 import os
 
-# Konfigurieren des Logging
+# Configue logs
 def configure_logging():
     logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
-# Laden der Konfiguration aus einer Datei
+# Load of configurations file
 def load_config(config_file='config.ini'):
     config = configparser.ConfigParser()
     if not os.path.exists(config_file):
-        logging.error(f"Konfigurationsdatei {config_file} nicht gefunden.")
+        logging.error(f"Configurations file {config_file} not found.")
         return None
     config.read(config_file)
     return config
 
-# Hilfsfunktion für sichere Pfadüberprüfung
+# Function for path check
 def safe_path_check(path):
-    """Überprüft, ob der angegebene Pfad existiert und schreibgeschützt ist."""
+    """Check if path exists."""
     if not os.path.exists(path):
-        logging.error(f"Pfad {path} existiert nicht.")
-        raise FileNotFoundError(f"Der angegebene Pfad {path} wurde nicht gefunden.")
+        logging.error(f"Path {path} doesn`t exist..")
+        raise FileNotFoundError(f"This path {path} could not be found.")
     if not os.access(path, os.W_OK):
-        logging.error(f"Pfad {path} ist nicht beschreibbar.")
-        raise PermissionError(f"Keine Schreibberechtigung für den Pfad {path}.")
+        logging.error(f"Path {path} is not write permission.")
+        raise PermissionError(f"No write permission for the path {path}.")
     return True
