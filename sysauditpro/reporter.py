@@ -4,7 +4,7 @@ from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
 from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer
 
 def generate_report(audit_results):
-    """Erstellt einen PDF-Bericht aus den Audit-Ergebnissen."""
+    """Create pdf report over events."""
     filename = "audit_report.pdf"
     document = SimpleDocTemplate(filename, pagesize=letter)
     styles = getSampleStyleSheet()
@@ -13,7 +13,7 @@ def generate_report(audit_results):
 
     elements = []
 
-    # Titel des Dokuments
+    # Title of document
     title = Paragraph("Cybersecurity Audit Report", styles['Title'])
     elements.append(title)
     elements.append(Spacer(1, 12))
@@ -39,6 +39,6 @@ def generate_report(audit_results):
     return filename
 
 def save_report(path):
-    """Platzhalterfunktion, um den Bericht in einem bestimmten Pfad zu speichern oder zu senden."""
-    # Implementieren Sie je nach Bedarf Logik zum Speichern oder Senden des Berichts.
+    """Placehold."""
+    # Placehold.
     print(f"Report saved to {path}")
