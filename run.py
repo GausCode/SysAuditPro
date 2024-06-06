@@ -2,16 +2,16 @@ from sysauditpro.auditor import perform_audit
 from sysauditpro.reporter import generate_report, save_report
 
 def main():
-    # Führe das Sicherheitsaudit durch
+    # Create security audit
     audit_results = perform_audit()
 
-    # Generiere einen PDF-Bericht basierend auf den Audit-Ergebnissen
+    # Generate pdf report from events
     report_file = generate_report(audit_results)
 
-    # Optional: Speichere oder sende den Bericht
+    # save the file
     save_report(report_file)
 
-    print(f"Der Bericht wurde erfolgreich erstellt und gespeichert als: {report_file}")
+    print(f"The report successfully save as: {report_file}")
 
 if __name__ == '__main__':
     main()
