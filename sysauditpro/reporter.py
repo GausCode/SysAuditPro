@@ -2,9 +2,10 @@ from reportlab.lib.pagesizes import letter
 from reportlab.pdfgen import canvas
 from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
 from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer
+from xml.sax.saxutils import escape
 
 def generate_report(audit_results):
-    """Create pdf report over events."""
+    """Erstellt einen PDF-Bericht aus den Audit-Ergebnissen."""
     filename = "audit_report.pdf"
     document = SimpleDocTemplate(filename, pagesize=letter)
     styles = getSampleStyleSheet()
@@ -13,7 +14,7 @@ def generate_report(audit_results):
 
     elements = []
 
-    # Title of document
+    # Titel des Dokuments
     title = Paragraph("Cybersecurity Audit Report", styles['Title'])
     elements.append(title)
     elements.append(Spacer(1, 12))
@@ -25,13 +26,13 @@ def generate_report(audit_results):
 
         if isinstance(details, dict):
             for key, value in details.items():
-                key_paragraph = Paragraph(f"<b>{key}:</b>", styles['BodyText'])
-                value_paragraph = Paragraph(f"{value}", wrapped_style)
+                key_paragraph = Paragraph(f"<b>{escape(key)}:</b>", styles['BodyText'])
+                value_paragraph = Paragraph(escape(str(value)), wrapped_style)
                 elements.append(key_paragraph)
                 elements.append(value_paragraph)
                 elements.append(Spacer(1, 12))
         else:
-            text = Paragraph(details, wrapped_style)
+            text = Paragraph(escape(details), wrapped_style)
             elements.append(text)
             elements.append(Spacer(1, 12))
 
@@ -39,6 +40,6 @@ def generate_report(audit_results):
     return filename
 
 def save_report(path):
-    """Placehold."""
-    # Placehold.
+    """Platzhalterfunktion, um den Bericht in einem bestimmten Pfad zu speichern oder zu senden."""
+    # Implementieren Sie je nach Bedarf Logik zum Speichern oder Senden des Berichts.
     print(f"Report saved to {path}")
