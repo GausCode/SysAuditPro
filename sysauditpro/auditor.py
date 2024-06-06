@@ -5,7 +5,7 @@ import subprocess
 from datetime import datetime
 
 def gather_system_info():
-    """Sammelt grundlegende Informationen über das Betriebssystem."""
+    """Get informations over the system."""
     info = {
         'Plattform': platform.system(),
         'Plattform-Release': platform.release(),
@@ -17,7 +17,7 @@ def gather_system_info():
     return info
 
 def check_security_settings():
-    """Überprüft die Sicherheitseinstellungen des Systems, einschließlich Firewall und Antivirusstatus."""
+    """Check secure settings, firewall and antivirus."""
     settings = {}
     os_type = platform.system().lower()
 
@@ -44,7 +44,7 @@ def check_security_settings():
     return settings
 
 def get_network_info():
-    """Erfasst Netzwerkinformationen einschließlich IP-Konfigurationen und Netzwerkverbindungen."""
+    """Catch network informations."""
     try:
         host_name = socket.gethostname()
         ip_address = socket.gethostbyname(host_name)
@@ -60,7 +60,7 @@ def get_network_info():
         return {'Error': str(e)}
 
 def get_installed_software():
-    """Listet installierte Software auf (Beispiel für Windows-basierte Systeme)."""
+    """Show list of installed software."""
     try:
         software_list = subprocess.run(['wmic', 'product', 'get', 'name,version'], capture_output=True, text=True, encoding='cp1252', errors='replace')
         installed_software = software_list.stdout
@@ -69,7 +69,7 @@ def get_installed_software():
         return {'Error': str(e)}
 
 def get_installed_patches():
-    """Listet installierte Patches und Updates auf."""
+    """Show list of installed patches and updates."""
     try:
         if platform.system().lower() == 'windows':
             patches = subprocess.run(['wmic', 'qfe', 'list'], capture_output=True, text=True, encoding='cp1252', errors='replace').stdout
@@ -80,7 +80,7 @@ def get_installed_patches():
         return {'Error': str(e)}
 
 def get_services():
-    """Listet laufende und gestoppte Dienste auf."""
+    """Show list of services"""
     try:
         if platform.system().lower() == 'windows':
             services = subprocess.run(['sc', 'query', 'type=', 'service', 'state=', 'all'], capture_output=True, text=True, encoding='cp1252', errors='replace').stdout
@@ -91,7 +91,7 @@ def get_services():
         return {'Error': str(e)}
 
 def get_user_info():
-    """Holt Informationen über Systembenutzer und prüft, ob Passwörter funktionieren."""
+    """Get informations over user"""
     os_type = platform.system().lower()
     try:
         if os_type == 'windows':
@@ -104,7 +104,7 @@ def get_user_info():
         return {'Error': str(e)}
 
 def get_system_logs():
-    """Zieht die letzten Einträge aus den Systemprotokollen."""
+    """get last events."""
     os_type = platform.system().lower()
     try:
         if os_type == 'windows':
@@ -116,7 +116,7 @@ def get_system_logs():
         return {'Error': str(e)}
 
 def get_hardware_info():
-    """Sammelt detaillierte Informationen über die Hardwarekonfiguration."""
+    """Catch informations of hardware."""
     os_type = platform.system().lower()
     try:
         if os_type == 'windows':
@@ -133,7 +133,7 @@ def get_hardware_info():
         return {'Error': str(e)}
 
 def perform_audit():
-    """Führt das gesamte Sicherheitsaudit durch und sammelt die Ergebnisse."""
+    """Start the hole events."""
     audit_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     system_info = gather_system_info()
     security_settings = check_security_settings()
