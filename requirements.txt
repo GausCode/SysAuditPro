@@ -1,8 +1,6 @@
-beautifulsoup4
-reportlab
-pytest
-loguru
 pillow>=10.3.0
 requests>=2.32.2
 cryptography>=3.4.7
-
+pymongo>=3.12
+protobuf==3.20.0
+keras>=3.0.0
