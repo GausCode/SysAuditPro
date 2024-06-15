@@ -3,5 +3,5 @@ reportlab
 pytest
 loguru
 pillow>=10.3.0
-requests>=2.25.1
+requests>=2.32.2
 cryptography>=3.4.7
