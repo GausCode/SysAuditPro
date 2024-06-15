@@ -1,6 +1,7 @@
-requests
 beautifulsoup4
 reportlab
-cryptography
 pytest
 loguru
+pillow>=8.2.0
+requests>=2.25.1
+cryptography>=3.4.7
