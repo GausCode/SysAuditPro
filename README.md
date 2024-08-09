@@ -18,7 +18,7 @@ SysAuditPro is a cybersecurity auditing tool designed to assess and report on th
 ### Running SysAuditPro
 To run SysAuditPro, follow these steps:
 1. Clone the repository:
-git clone https://github.com/yourusername/SysAuditPro.git
+git clone https://github.com/GausCode/SysAuditPro.git
 
 2. Navigate to the SysAuditPro directory:
 cd SysAuditPro
